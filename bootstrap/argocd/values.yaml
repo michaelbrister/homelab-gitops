@@ -1,0 +1,16 @@
+configs:
+  cm:
+    url: http://argocd.brister.lan
+
+  params:
+    server.insecure: true
+
+server:
+  ingress:
+    enabled: true
+    ingressClassName: traefik
+    hostname: argocd.brister.lan
+    pathType: Prefix
+    paths:
+      - /
+    tls: false
