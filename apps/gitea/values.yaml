@@ -1,0 +1,46 @@
+ingress:
+  enabled: true
+  className: traefik
+  hosts:
+    - host: gitea.brister.lan
+      paths:
+        - path: /
+          pathType: Prefix
+
+service:
+  http:
+    type: ClusterIP
+    port: 3000
+
+persistence:
+  enabled: true
+  storageClass: microk8s-hostpath
+  size: 10Gi
+
+gitea:
+  config:
+    server:
+      DOMAIN: gitea.brister.lan
+      ROOT_URL: http://gitea.brister.lan/
+      PROTOCOL: http
+
+    database:
+      DB_TYPE: postgres
+
+postgresql:
+  enabled: true
+
+  primary:
+    persistence:
+      enabled: true
+      storageClass: microk8s-hostpath
+      size: 10Gi
+
+postgresql-ha:
+  enabled: false
+
+redis:
+  enabled: false
+
+redis-cluster:
+  enabled: false
