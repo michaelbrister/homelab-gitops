@@ -16,6 +16,13 @@ loki:
           prefix: loki_index_
           period: 24h
 
+  storage:
+    type: filesystem
+    bucketNames:
+      chunks: chunks
+      ruler: ruler
+      admin: admin
+
   storage_config:
     filesystem:
       directory: /var/loki/chunks
@@ -31,7 +38,6 @@ singleBinary:
     storageClass: microk8s-hostpath
     size: 10Gi
 
-# Disable the other deployment modes.
 backend:
   replicas: 0
 
@@ -53,6 +59,5 @@ queryFrontend:
 queryScheduler:
   replicas: 0
 
-# We don't need object storage/MinIO for this homelab deployment.
 minio:
   enabled: false
