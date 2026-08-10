@@ -1,6 +1,10 @@
 ingress:
   enabled: true
   className: traefik
+
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+
   hosts:
     - host: gitea.home.mikebrister.com
       paths:
@@ -24,7 +28,7 @@ gitea:
     server:
       DOMAIN: gitea.home.mikebrister.com
       ROOT_URL: https://gitea.home.mikebrister.com/
-      PROTOCOL: https
+      PROTOCOL: http
 
     database:
       DB_TYPE: postgres
