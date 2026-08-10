@@ -10,6 +10,10 @@ ingress:
       paths:
         - path: /
           pathType: Prefix
+  tls:
+    - secretName: gitea-tls
+      hosts:
+        - gitea.home.mikebrister.com
 
 service:
   http:
