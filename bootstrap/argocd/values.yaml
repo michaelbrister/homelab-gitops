@@ -1,6 +1,6 @@
 configs:
   cm:
-    url: http://argocd.brister.lan
+    url: https://argocd.brister.lan
 
   params:
     server.insecure: true
@@ -9,8 +9,12 @@ server:
   ingress:
     enabled: true
     ingressClassName: traefik
-    hostname: argocd.brister.lan
+    hostname: argocd.home.mikebrister.com
+
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+
     pathType: Prefix
     paths:
       - /
-    tls: false
+    tls: true
