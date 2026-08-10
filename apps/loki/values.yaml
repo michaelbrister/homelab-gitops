@@ -1,0 +1,58 @@
+deploymentMode: Monolithic
+
+loki:
+  auth_enabled: false
+
+  commonConfig:
+    replication_factor: 1
+
+  schemaConfig:
+    configs:
+      - from: "2024-01-01"
+        store: tsdb
+        object_store: filesystem
+        schema: v13
+        index:
+          prefix: loki_index_
+          period: 24h
+
+  storage_config:
+    filesystem:
+      directory: /var/loki/chunks
+
+  limits_config:
+    retention_period: 168h
+
+singleBinary:
+  replicas: 1
+
+  persistence:
+    enabled: true
+    storageClass: microk8s-hostpath
+    size: 10Gi
+
+# Disable the other deployment modes.
+backend:
+  replicas: 0
+
+read:
+  replicas: 0
+
+write:
+  replicas: 0
+
+ingester:
+  replicas: 0
+
+querier:
+  replicas: 0
+
+queryFrontend:
+  replicas: 0
+
+queryScheduler:
+  replicas: 0
+
+# We don't need object storage/MinIO for this homelab deployment.
+minio:
+  enabled: false
