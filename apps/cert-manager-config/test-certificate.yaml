@@ -1,0 +1,14 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: test-home-mikebrister-com
+  namespace: cert-manager
+spec:
+  secretName: test-home-mikebrister-com-tls
+
+  issuerRef:
+    name: letsencrypt-staging
+    kind: ClusterIssuer
+
+  dnsNames:
+    - test.home.mikebrister.com
