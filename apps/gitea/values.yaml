@@ -2,7 +2,7 @@ ingress:
   enabled: true
   className: traefik
   hosts:
-    - host: gitea.brister.lan
+    - host: gitea.home.mikebrister.com
       paths:
         - path: /
           pathType: Prefix
@@ -22,9 +22,9 @@ gitea:
     repository:
       ENABLE_PUSH_CREATE_USER: true
     server:
-      DOMAIN: gitea.brister.lan
-      ROOT_URL: http://gitea.brister.lan/
-      PROTOCOL: http
+      DOMAIN: gitea.home.mikebrister.com
+      ROOT_URL: https://gitea.home.mikebrister.com/
+      PROTOCOL: https
 
     database:
       DB_TYPE: postgres
