@@ -1,0 +1,18 @@
+server:
+  standalone:
+    enabled: true
+
+  dataStorage:
+    enabled: true
+    storageClass: microk8s-hostpath
+    size: 10Gi
+
+  readinessProbe:
+    enabled: true
+    path: /v1/sys/health?uninitcode=204&sealedcode=204
+
+ui:
+  enabled: true
+
+injector:
+  enabled: false
