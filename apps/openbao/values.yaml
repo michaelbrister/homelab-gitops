@@ -29,6 +29,7 @@ server:
     - name: openbao-unseal
       secret:
         secretName: openbao-unseal
+        defaultMode: 0400
 
   volumeMounts:
     - name: openbao-unseal
