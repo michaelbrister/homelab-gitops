@@ -1,24 +1,35 @@
 server:
   standalone:
+    enabled: false
+
+  ha:
     enabled: true
+    replicas: 1
 
-    config: |
-      ui = true
+    raft:
+      enabled: true
+      setNodeId: true
 
-      listener "tcp" {
-        address         = "[::]:8200"
-        cluster_address = "[::]:8201"
-        tls_disable     = 1
-      }
+      config: |
+        ui = true
 
-      storage "file" {
-        path = "/openbao/data"
-      }
+        listener "tcp" {
+          address         = "[::]:8200"
+          cluster_address = "[::]:8201"
+          tls_disable     = 1
+        }
 
-      seal "static" {
-        current_key_id = "homelab-1"
-        current_key    = "file:///openbao/secrets/unseal.key"
-      }
+        storage "raft" {
+          path    = "/openbao/data/raft"
+          node_id = "openbao-0"
+        }
+
+        cluster_addr = "https://openbao-0.openbao-internal:8201"
+
+        seal "static" {
+          current_key_id = "homelab-1"
+          current_key    = "file:///openbao/secrets/unseal.key"
+        }
 
   dataStorage:
     enabled: true
