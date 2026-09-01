@@ -27,17 +27,6 @@ cluster, or jump to the component you are changing:
 5. [Install and verify the observability stack](docs/tutorials/05-observability.md)
 6. [Deliver secrets with OpenBao and External Secrets](docs/tutorials/06-openbao-and-external-secrets.md)
 
-Planned components that do not yet have Argo CD Applications or values in this
-repository are documented separately:
-
-7. [Plan the Linkerd deployment](docs/tutorials/07-linkerd-planned.md)
-8. [Plan the Permission Manager deployment](docs/tutorials/08-permission-manager-planned.md)
-9. [Plan the code-server deployment](docs/tutorials/09-code-server-planned.md)
-
-The planned tutorials are implementation guides, not claims that those
-components are currently installed. Each one lists the decisions and GitOps
-artifacts required to move it into the managed stack.
-
 ## Repository layout
 
 ```text
