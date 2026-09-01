@@ -14,6 +14,9 @@ applications under `argocd/applications/`.
 
 ## Tutorials
 
+See the [complete homelab tutorial index](docs/Tutorial-index.md) for the
+validated guides and planned implementation candidates.
+
 The tutorials build on one another. Start with the first chapter on a new
 cluster, or jump to the component you are changing:
 
